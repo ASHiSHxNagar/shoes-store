@@ -1,16 +1,17 @@
 import { Metadata } from "next";
+import sampleData from "@/db/sample-data";
+import ProductList from "@/components/shared/products/product-list";
+
 
 export const metadata: Metadata = {
   title: `Home`,
 };
 
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-export default async function Home() {
-  await delay(5000);
+export default  function Home() {
   return (
-    <main>
-      helloworld
-    </main>
+   <>
+   <ProductList data={sampleData.products} title="Featured Products" limit={4} />
+   </>
   );
 }

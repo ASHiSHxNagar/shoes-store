@@ -1,6 +1,7 @@
+import { Product } from "@/types";
 import ProductCard from "./product-card";
 
-const ProductList=({data,title,limit} : {data:any; title?:string; limit?:number})=>{
+const ProductList=({data,title,limit} : {data:Product[]; title?:string; limit?:number})=>{
 
     const limitData = limit? data.slice(0,limit) : data
     return (
@@ -11,7 +12,7 @@ const ProductList=({data,title,limit} : {data:any; title?:string; limit?:number}
                 <div className="grid grid-cols-1 sm:grid-cols-2
                 md:grid-cols-3
                 lg:grid-cols-4 gap-4">
-                    {limitData.map((product:any)=>(<ProductCard key={product.slug} product={product} />))}
+                    {limitData.map((product:Product)=>(<ProductCard key={product.slug} product={product} />))}
                 </div>
             ):(<div> <p>No products found.</p></div>)}
             </div>

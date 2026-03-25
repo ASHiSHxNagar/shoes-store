@@ -1,14 +1,16 @@
-import { Button } from "@base-ui/react";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: `Home`,
 };
 
-export default function Home() {
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+export default async function Home() {
+  await delay(5000);
   return (
     <main>
-      
+      helloworld
     </main>
   );
 }

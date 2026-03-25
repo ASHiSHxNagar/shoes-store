@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Roboto} from "next/font/google";
 import "@/assets/styles/globals.css";
 import { APP_NAME , NEXT_PUBLIC_APP_DESCRIPTION, SERVER_URL } from "@/lib/constants";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const roboto = Roboto({
   weight: ["300", "500", "700"],
@@ -24,9 +25,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${roboto.className}`}>
+       <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+       >
         {children}
+       </ThemeProvider>
       </body>
     </html>
   );

@@ -55,6 +55,15 @@ export const config={
     ],
     callbacks : {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        async jwt({ token, user }: any) {
+            if (user) {
+                token.sub = user.id;
+                token.role = user.role;
+                token.name = user.name;
+            }
+            return token;
+        },
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         async session({session,user,trigger,token}:any){
             session.user.id = token.sub;
             session.user.role = token.role;

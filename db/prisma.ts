@@ -16,7 +16,6 @@ function createPrismaClient() {
   const pool = new Pool({ connectionString });
   const adapter = new PrismaNeon(pool);
 
-  // @ts-expect-error - adapter is supported but not in type definitions yet
   return new PrismaClient({ adapter }).$extends({
     result: {
       product: {

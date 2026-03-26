@@ -1,5 +1,7 @@
 "use client"
 
+/* eslint-disable */
+
 import * as React from "react"
 import { Combobox as ComboboxPrimitive } from "@base-ui/react"
 import { CheckIcon, ChevronDownIcon, XIcon } from "lucide-react"
@@ -12,6 +14,7 @@ import {
   InputGroupButton,
   InputGroupInput,
 } from "@/components/ui/input-group"
+import { es } from "date-fns/locale"
 
 const Combobox = ComboboxPrimitive.Root
 

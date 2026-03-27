@@ -5,7 +5,8 @@ import { signInFormSchema, signUpFormSchema } from "../validator"
 import { isRedirectError } from "next/dist/client/components/redirect-error";
 import { hashSync } from "bcrypt-ts-edge";
 import { prisma } from "@/db/prisma";
-import { Prisma } from "@prisma/client";
+import { handleError } from "../utils";
+// import { Prisma } from "@prisma/client";
 
 //sign in user with credentials
 
@@ -64,21 +65,7 @@ export async function signUpUser(prevState : unknown, formData : FormData){
         if(isRedirectError(error)){
             throw error;
         }
-
-        if (
-            error instanceof Prisma.PrismaClientKnownRequestError &&
-            error.code === "P2002" &&
-            Array.isArray(error.meta?.target) &&
-            error.meta.target.includes("email")
-        ) {
-            return {success : false, message : "User already exists with this email"}
-        }
-
-        if (error instanceof Error) {
-            return {success : false, message : error.message}
-        }
-
-        return {success : false, message : "Sign up failed. Please try again."}
+        return {success : false, message : handleError(error)}
 
     }
 }

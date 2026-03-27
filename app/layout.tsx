@@ -3,6 +3,7 @@ import { Roboto} from "next/font/google";
 import "@/assets/styles/globals.css";
 import { APP_NAME , NEXT_PUBLIC_APP_DESCRIPTION, SERVER_URL } from "@/lib/constants";
 import { ThemeProvider } from "@/components/theme-provider";
+// import { ErrorWrapper } from "./error-wrapper";
 
 const roboto = Roboto({
   weight: ["300", "500", "700"],
@@ -33,7 +34,9 @@ export default function RootLayout({
         enableSystem
         disableTransitionOnChange
        >
-        {children}
+       {/* <ErrorWrapper> */}
+         {children}
+       {/* </ErrorWrapper> */}
        </ThemeProvider>
       </body>
     </html>
